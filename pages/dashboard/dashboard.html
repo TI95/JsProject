@@ -71,8 +71,7 @@
 </nav>
 
 <div class="d-flex">
-    <nav class="d-xl-flex d-none  flex-column flex-shrink-0 bg-white vh-100 border-end border-light border-2  "
-         style="width: 220px;">
+    <nav class="d-xl-flex d-none  flex-column flex-shrink-0 bg-white vh-100 border-end border-light border-2 my-sidebar-class">
         <a href="../../index.html"
            class="d-flex align-items-center mb-3 mb-md-0 <!--me-md-auto--> link-dark text-decoration-none justify-content-center border-bottom border-light border-2 ">
             <img class="mb-5 mt-4" src="../../images/logo.png" alt="logo" style="width: 98px; height: 40px;">
@@ -132,7 +131,7 @@
     </nav>
 
 
-    <section class="content container-fluid px-lg-5 px-3">
+    <section class="content container-fluid px-lg-4 px-3">
         <div class="title-container">
             <h1 class="dashboard-title">Создание дохода/расхода</h1>
         </div>
@@ -142,32 +141,20 @@
                 <a href="dashboard-create.html" class=" btn btn-danger my-font-size">Создать расход</a>
             </div>
             <div class="">
-                <div class="row gy-2 gx-2  gx-md-2 mb-5 text-center">
-                    <div class="col-lg col-sm-3 col-6">
-                        <button type="button" class="btn btn-outline-secondary data-filter-btn" style="width: 100px;">Сегодня</button>
-                    </div>
-                    <div class="col-lg col-sm-3 col-6">
-                        <button type="button" class="btn btn-outline-secondary data-filter-btn" style="width: 100px;">Неделя</button>
-                    </div>
-                    <div class="col-lg col-sm-3 col-6">
-                        <button type="button" class="btn btn-outline-secondary data-filter-btn" style="width: 100px;">Месяц</button>
-                    </div>
-                    <div class="col-lg col-sm-3 col-6">
-                        <button type="button" class="btn btn-outline-secondary data-filter-btn" style="width: 100px;">Год</button>
-                    </div>
-                    <div class="col-lg col-sm-3 col-6">
-                        <button type="button" class="btn btn-outline-secondary data-filter-btn" style="width: 100px;">Все</button>
-                    </div>
-                    <div class="col-lg col-sm-3 col-6">
-                        <button type="button" class="btn btn-outline-secondary data-filter-btn " style="width: 100px;">Интервал</button>
-                    </div>
-                    <div class="col-lg col-sm-3 col-6 d-flex align-items-center justify-content-center ">
+                <div class="d-flex flex-wrap   mb-5  justify-content-center  justify-content-sm-start">
+                        <button type="button" class="btn btn-outline-secondary data-filter-btn me-2 me-lg-2 mb-2">Сегодня</button>
+                        <button type="button" class="btn btn-outline-secondary data-filter-btn me-2 me-md-3 mb-2">Неделя</button>
+                        <button type="button" class="btn btn-outline-secondary data-filter-btn  me-2 me-md-3 mb-2">Месяц</button>
+                        <button type="button" class="btn btn-outline-secondary data-filter-btn me-2 me -md-3 mb-2">Год</button>
+                        <button type="button" class="btn btn-outline-secondary data-filter-btn me-2 me-md-3 mb-2">Все</button>
+                        <button type="button" class="btn btn-outline-secondary data-filter-btn me-2 me-md-3 mb-2">Интервал</button>
+                    <div class=" d-flex align-items-center justify-content-center me-2 me-md-3 mb-2 my-date-input ">
                         <label for="date-from" class="fw-bold ps-2  me-2">с</label>
-                        <input type="text" placeholder="Дата" id="date-from" class="form-control border-0 outline-0 date-from" style="width: 85px;">
+                        <input type="text" placeholder="Дата" id="date-from" class="form-control border-0 outline-0 date-from">
                     </div>
-                    <div class="col-lg col-sm-3 col-6 d-flex align-items-center justify-content-center">
-                        <label for="date-to" class="fw-bold ps-2  me-2">до</label>
-                        <input type="text" placeholder="Дата" id="date-to" class="form-control border-0 outline-0 date-to" style="width: 85px;">
+                    <div class="d-flex align-items-center justify-content-center my-date-input mb-2">
+                        <label for="date-to" class="fw-bold ps-2  me-2 ">до</label>
+                        <input type="text" placeholder="Дата" id="date-to" class="form-control border-0 outline-0 date-to">
                     </div>
                 </div>
             <div class="table-responsive-sm">

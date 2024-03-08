@@ -4,6 +4,10 @@ body {
   font-size: 14px;
 }
 
+.my-sidebar-class {
+  width: 220px;
+}
+
 .accordion-button:not(.collapsed) {
   background-color:#0D6EFD ;
   color: white;
@@ -31,9 +35,19 @@ body {
   }
 }
 
+.data-filter-btn {
+  width: 100px;
+}
+
+.my-date-input {
+  width: 100px;
+}
+
 .date-filter-margin{
   margin-bottom: 140px;
 }
+
+
 
 .date-to,
 .date-from{
@@ -69,4 +83,13 @@ body {
   text-align: center;
   background-image: none;
   transform: rotate(360deg);
+}
+
+
+.my-card-class {
+  width: 352px;
+}
+
+.my-add-card-class {
+  height: 121px;
 }
