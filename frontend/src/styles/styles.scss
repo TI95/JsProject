@@ -5,7 +5,9 @@ body {
   background-color: white !important;
 }
 
-
+.my-max-width {
+  max-width: 400px;
+}
 
 .accordion-button:not(.collapsed) {
   background-color:#0D6EFD ;

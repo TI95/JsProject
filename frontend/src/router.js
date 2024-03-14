@@ -31,8 +31,7 @@ export class Router {
                     new Stats(this.openNewRoute.bind(this));
 
                 },
-                scripts: [/*'chart.jslib'*/],
-                styles: []
+
             },
             {
                 route: '/login',
@@ -40,15 +39,18 @@ export class Router {
                 filePathTemplate: '/templates/pages/auth/login.html',
                 useLayout: false,
                 load: () => {
-                    document.body.classList.add('login-page');
+                    document.body.classList.add('d-flex');
+                    document.body.classList.add('justify-content-center');
+                    document.body.classList.add('align-items-center');
                     document.body.style.height = '100vh';
                     new Login(this.openNewRoute.bind(this));
                 },
                 unload: () => {
-                    document.body.classList.remove('login-page');
+                    document.body.classList.remove('d-flex');
+                    document.body.classList.remove('justify-content-center');
+                    document.body.classList.remove('align-items-center');
                     document.body.style.height = 'auto';
                 },
-                styles: ['icheck-bootstrap.min.css', 'adminlte.min.css'],
 
             },
             {
@@ -57,16 +59,19 @@ export class Router {
                 filePathTemplate: '/templates/pages/auth/signup.html',
                 useLayout: false,
                 load: () => {
-                    document.body.classList.add('register-page');
+                    document.body.classList.add('d-flex');
+                    document.body.classList.add('justify-content-center');
+                    document.body.classList.add('align-items-center');
                     document.body.style.height = '100vh';
                     new Signup(this.openNewRoute.bind(this));
                 },
                 unload: () => {
-                    document.body.classList.remove('register-page');
+                    document.body.classList.remove('d-flex');
+                    document.body.classList.remove('justify-content-center');
+                    document.body.classList.remove('align-items-center');
                     document.body.style.height = 'auto';
                 },
 
-                styles: ['icheck-bootstrap.min.css', 'adminlte.min.css'],
             },
             {
                 route: '/logout',
@@ -82,7 +87,7 @@ export class Router {
                 load: () => {
                     new Incomes(this.openNewRoute.bind(this));
                 },
-                scripts: [],
+
             },
             {
                 route: '/incomes/create',
@@ -94,7 +99,7 @@ export class Router {
 
 
                 },
-                styles: ['icheck-bootstrap.min.css'],
+
             },
             {
                 route: '/incomes/redact',
@@ -105,7 +110,7 @@ export class Router {
                     new RedactIncomeCategory(this.openNewRoute.bind(this));
 
                 },
-                scripts: [],
+
             },
             {
                 route: '/expenses',
@@ -116,7 +121,7 @@ export class Router {
                     new Expenses(this.openNewRoute.bind(this));
 
                 },
-                scripts: [],
+
             },
             {
                 route: '/expenses/create',
@@ -127,7 +132,7 @@ export class Router {
                     new CreateExpenseCategory(this.openNewRoute.bind(this));
 
                 },
-                styles: ['icheck-bootstrap.min.css'],
+
             },
             {
                 route: '/expenses/redact',
@@ -138,7 +143,7 @@ export class Router {
                     new RedactExpenseCategory(this.openNewRoute.bind(this));
 
                 },
-                styles: ['icheck-bootstrap.min.css'],
+
             },
             {
                 route: '/dashboard',
@@ -149,7 +154,7 @@ export class Router {
                     new Dashboard(this.openNewRoute.bind(this));
 
                 },
-                scripts: [],
+
             },
             {
                 route: '/dashboard/create',
@@ -160,7 +165,7 @@ export class Router {
                     new DashboardCreate(this.openNewRoute.bind(this));
 
                 },
-                styles: ['icheck-bootstrap.min.css'],
+
             },
             {
                 route: '/dashboard/redact',
@@ -171,7 +176,7 @@ export class Router {
                     new DashboardRedact(this.openNewRoute.bind(this));
 
                 },
-                styles: ['icheck-bootstrap.min.css'],
+
             },
         ]
 
@@ -194,36 +199,16 @@ export class Router {
     async activateRoute(e, oldRoute) {
         if (oldRoute) {
             const currentRoute = this.routes.find(item => item.route === oldRoute);
-            if (currentRoute.styles && currentRoute.styles.length > 0) {
-                currentRoute.styles.forEach(style => {
-                    document.querySelector(`link[href='/css/${style}']`).remove();
-                });
-            }
-            if (currentRoute.scripts && currentRoute.scripts.length > 0) {
-                currentRoute.scripts.forEach(script => {
-                    document.querySelector(`script[src='/js/${script}']`).remove();
-                });
-            }
             if (currentRoute.unload && typeof currentRoute.unload === 'function') {
                 currentRoute.unload();
             }
         }
 
-
         const urlRoute = window.location.pathname;
         const newRoute = this.routes.find(item => item.route === urlRoute);
 
         if (newRoute) {
-            if (newRoute.styles && newRoute.styles.length > 0) {
-                newRoute.styles.forEach(style => {
-                    FileUtils.loadPageStyle('/css/' + style);
-                });
-            }
-            if (newRoute.scripts && newRoute.scripts.length > 0) {
-                for (const script of newRoute.scripts) {
-                    await FileUtils.loadPageScript('/jslib/' + script);
-                }
-            }
+
 
             if (newRoute.title) {
                 this.titlePageElement.innerText = newRoute.title + ' | Lumincoin Finance'

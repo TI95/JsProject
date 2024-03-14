@@ -30,6 +30,13 @@ module.exports = {
                     "sass-loader",
                 ],
             },
+            {
+                test: /\.css$/i,
+                use: [
+                    'style-loader',
+                    'css-loader'
+                ]
+            }
         ],
     },
     plugins: [
@@ -42,16 +49,6 @@ module.exports = {
             patterns: [
                 {from: "./src/templates", to: "templates"},
                 {from: "./src/images", to: "images"},
-                {from: "./src/styles/styles.scss", to: "css"},
-                {from: "./src/styles/libraries/adminlte.min.css", to: "css"},
-                {from: "./src/styles/libraries/bootstrap.min.css", to: "css"},
-                {from: "./src/styles/libraries/icheck-bootstrap.min.css", to: "css"},
-                //{from: "./src/styles/libraries/all.min.css", to: "css"},
-                //{from: "./src/jslib/chart.js", to: "js"},
-                {from: "./src/jslib/adminlte.min.js", to: "js"},
-                {from: "./src/jslib/jquery.min.js", to: "js"},
-                {from: "./src/jslib/bootstrap.bundle.min.js", to: "js"},
-                {from: "./src/jslib/chart.js", to: "js"},
                 {from: "./.env", to: "./"},
             ]
         })
