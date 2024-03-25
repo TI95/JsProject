@@ -50,7 +50,7 @@ export class AuthUtils {
             if (response && response.status === 200) {
                 const tokens = await response.json();
                 if (tokens && !tokens.error) {
-                    this.setAuthInfo(tokens.accessTokenKey, tokens.refreshToken);
+                    this.setAuthInfo(tokens.accessToken, tokens.refreshToken);
                     result = true;
                 }
             }

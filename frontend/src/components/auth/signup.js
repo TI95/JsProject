@@ -27,14 +27,15 @@ export class Signup {
             isValid = false;
         }
 
-            if (this.emailElement.value && this.emailElement.value.match(/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/)) {
-                this.emailElement.classList.remove('is-invalid');
-            } else {
-                this.emailElement.classList.add('is-invalid');
-                isValid = false;
-            }
+        if (this.emailElement.value && this.emailElement.value.match(/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/)) {
+            this.emailElement.classList.remove('is-invalid');
+        } else {
+            this.emailElement.classList.add('is-invalid');
+            isValid = false;
 
-            if (this.passwordElement.value && this.passwordElement.value.match(/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/)) {
+        }
+
+            if (this.passwordElement.value && this.passwordElement.value.match(/^(?=.*[A-Z])(?=.*\d).{8,}$/)) {
                 this.passwordElement.classList.remove('is-invalid');
             } else {
                 this.passwordElement.classList.add('is-invalid');

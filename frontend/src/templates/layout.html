@@ -1,7 +1,7 @@
 
 <nav class="d-flex d-xl-none navbar navbar-expand-md  bg-white">
     <div class="container-fluid d-flex justify-content-between">
-        <a href="../../index.html" class="navbar-brand">
+        <a href="../../index.html" class="">
             <img src="/images/logo.png" alt="logo" style="width: 98px; height: 40px;">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
@@ -39,15 +39,16 @@
                 </li>
             </ul>
             <div class="dropdown  d-flex align-items-center justify-content-center">
-                <div class="nav-link d-flex align-items-center  ms-2">
+                <div class="nav-link d-flex align-items-center  ms-1">
                     Баланс:
-                    <a href="#" class="text-decoration-none my-style-color">500$</a>
+                    <span class="text-primary" id="mobile-balance"></span>
                 </div>
-                <a href="#" class="nav-link text-decoration-none ms-2 "
+                <a href="#" class="nav-link text-decoration-none ms-1 "
                    data-bs-toggle="dropdown" aria-expanded="false">
                     <img src="../images/user-icon.png" alt="user-icon" class="<!--rounded-circle -->  user-img">
                 </a>
-                <span class="ms-2">Roman Chernov</span>
+                <span id="profile-name-mobile" class="ms-1 me-1">  </span>
+                <span id="profile-lastName-mobile">  </span>
                 <ul class="dropdown-menu text-small shadow">
                     <li><a class="dropdown-item my-style-color my-font-size" href="/logout">Logout</a></li>
                 </ul>
@@ -97,14 +98,14 @@
     </ul>
     <div class="nav-link link value ps-4 mb-3">
         Баланс:
-        <a href="#" class="text-decoration-none">500$</a>
+        <span  class="text-primary" id="balance"></span>
     </div>
     <div class="dropdown p-3 border-top d-flex align-items-center">
         <a href="#" class="d-flex align-items-center my-style-color text-decoration-none "
            id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
             <img src="../../images/user-icon.png" alt="user-icon" class="rounded-circle me-3">
         </a>
-        <span>Roman Chernov</span>
+        <span id="profile-name" class="me-1"></span> <span id="profile-lastName"></span>
 
         <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
             <li><a class="dropdown-item my-style-color my-font-size" href="/logout">Logout</a></li>

@@ -5,7 +5,6 @@ import {AuthUtils} from "./auth-utils";
 export class HttpUtils {
     static async request (url, method = "GET", useAuth = true, body = null){
 
-
         const result = {
             error: false,
             response: null,
@@ -22,9 +21,9 @@ export class HttpUtils {
         let token = null;
 
         if (useAuth) {
-            token = AuthUtils.getAuthInfo(AuthUtils.accessTokenKey);
+            token = AuthUtils.getAuthInfo(AuthUtils.refreshTokenKey);
             if (token) {
-                params.headers['x-access-token'] = token;
+                params.headers['x-auth-token'] = token;
             }
         }
 
@@ -41,7 +40,6 @@ export class HttpUtils {
         try {
             response = await fetch(config.api + url, params);
             result.response = await response.json();
-            console.log(result.response)
         } catch (e) {
             result.error = true;
             return result;
@@ -50,11 +48,9 @@ export class HttpUtils {
         if (response.status < 200 || response.status >= 300) {
             result.error = true;
             if (useAuth && response.status === 401) {
-                // 1 - токена нет
                 if (!token) {
                     result.redirect = '/login';
                 } else {
-                    // 2 - токен устарел/не валидный (надо обновить)
                     const updateTokenResult = await AuthUtils.updateRefreshToken();
                     if (updateTokenResult) {
                         return this.request(url, method, useAuth, body);
