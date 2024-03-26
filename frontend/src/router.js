@@ -1,4 +1,3 @@
-import {FileUtils} from "./utils/file-utils";
 import {Stats} from "./components/stats";
 import {Incomes} from "./components/incomes/incomes";
 import {Expenses} from "./components/expenses/expenses";
@@ -12,12 +11,15 @@ import {CreateIncomeCategory} from "./components/incomes/create";
 import {RedactIncomeCategory} from "./components/incomes/redact";
 import {RedactExpenseCategory} from "./components/expenses/redact";
 import {CreateExpenseCategory} from "./components/expenses/create";
+import {AuthUtils} from "./utils/auth-utils";
+import {HttpUtils} from "./utils/http-utils";
 
 export class Router {
     constructor() {
         this.titlePageElement = document.getElementById('title');
         this.contentPageElement = document.getElementById('content');
-
+        this.userName = null;
+        this.userLastName = null;
 
         this.initEvents();
 
@@ -80,7 +82,7 @@ export class Router {
                 }
             },
             {
-                route: '/incomes',
+                route: '/income',
                 title: 'Доходы',
                 filePathTemplate: '/templates/pages/incomes/incomes.html',
                 useLayout: '/templates/layout.html',
@@ -90,7 +92,7 @@ export class Router {
 
             },
             {
-                route: '/incomes/create',
+                route: '/income/create',
                 title: 'Добавление категории дохода',
                 filePathTemplate: '/templates/pages/incomes/create.html',
                 useLayout: '/templates/layout.html',
@@ -102,7 +104,7 @@ export class Router {
 
             },
             {
-                route: '/incomes/redact',
+                route: '/income/redact',
                 title: 'Изменение категории дохода',
                 filePathTemplate: '/templates/pages/incomes/redact.html',
                 useLayout: '/templates/layout.html',
@@ -113,7 +115,7 @@ export class Router {
 
             },
             {
-                route: '/expenses',
+                route: '/expense',
                 title: 'Расходы',
                 filePathTemplate: '/templates/pages/expenses/expenses.html',
                 useLayout: '/templates/layout.html',
@@ -124,7 +126,7 @@ export class Router {
 
             },
             {
-                route: '/expenses/create',
+                route: '/expense/create',
                 title: 'Добавление категории дохода',
                 filePathTemplate: '/templates/pages/expenses/create.html',
                 useLayout: '/templates/layout.html',
@@ -135,9 +137,9 @@ export class Router {
 
             },
             {
-                route: '/expenses/redact',
+                route: '/expense/redact',
                 title: 'Изменение категории дохода',
-                filePathTemplate: '/templates/pages/income/redact.html',
+                filePathTemplate: '/templates/pages/expenses/redact.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
                     new RedactExpenseCategory(this.openNewRoute.bind(this));
@@ -168,7 +170,7 @@ export class Router {
 
             },
             {
-                route: '/dashboard/redact',
+                route: '/dashboard/redact/',
                 title: 'Редактировать доход и расход',
                 filePathTemplate: '/templates/pages/dashboard/redact.html',
                 useLayout: '/templates/layout.html',
@@ -185,7 +187,6 @@ export class Router {
     initEvents() {
         window.addEventListener('DOMContentLoaded', this.activateRoute.bind(this)) // отлавливаем, что страница загружается
         window.addEventListener('popstate', this.activateRoute.bind(this)) // отлавливаем когда поменялся url
-        //document.addEventListener('click', this.clickHandler.bind(this));
     }
 
     async openNewRoute(url) {
@@ -209,7 +210,6 @@ export class Router {
 
         if (newRoute) {
 
-
             if (newRoute.title) {
                 this.titlePageElement.innerText = newRoute.title + ' | Lumincoin Finance'
             }
@@ -219,6 +219,34 @@ export class Router {
                 if (newRoute.useLayout) {
                     this.contentPageElement.innerHTML = await fetch(newRoute.useLayout).then(response => response.text());
                     contentBlock = document.getElementById('content-layout');
+                    this.profileNameElement = document.getElementById('profile-name');
+                    this.profileLatnNameElement = document.getElementById('profile-lastName');
+                    this.profileNameElementMobile = document.getElementById('profile-name-mobile');
+                    this.profileLatnNameElementMobile = document.getElementById('profile-lastName-mobile');
+                    this.userBalance = document.getElementById('balance')
+                    this.userMobileBalance = document.getElementById('mobile-balance');
+
+                    const result = await HttpUtils.request('/balance');
+                    if (result){
+                        this.userBalance.innerText = result.response.balance + ' $';
+                        this.userMobileBalance.innerText = result.response.balance + ' $';
+                    }
+                    if (!this.userName && !this.userLastName) {
+                        let userInfo = AuthUtils.getAuthInfo(AuthUtils.userInfoTokenKey);
+                        if (userInfo) {
+                            userInfo = JSON.parse(userInfo);
+                            if (userInfo.name && userInfo.lastName) {
+                                this.userName = userInfo.name;
+                                this.userLastName = userInfo.lastName;
+                            }
+                        }
+                    }
+
+                    this.profileNameElement.innerText = this.userName;
+                    this.profileLatnNameElement.innerText = this.userLastName;
+                    this.profileNameElementMobile.innerText = this.userName;
+                    this.profileLatnNameElementMobile.innerText = this.userLastName;
+
                 }
 
                 contentBlock.innerHTML = await fetch(newRoute.filePathTemplate).then(response => response.text());

@@ -1,11 +1,7 @@
-import {AuthUtils} from "../../utils/auth-utils";
+import {RedactCategory} from "../../utils/redact-category-utils";
 
-export class RedactExpenseCategory {
+export class RedactExpenseCategory extends RedactCategory {
     constructor(openNewRoute) {
-        this.openNewRoute = openNewRoute;
-
-        if (!AuthUtils.getAuthInfo(AuthUtils.accessTokenKey) || !AuthUtils.getAuthInfo(AuthUtils.refreshTokenKey)) {
-            return this.openNewRoute('/login');
-        }
+        super(openNewRoute, 'expense', 'expense-title');
     }
 }

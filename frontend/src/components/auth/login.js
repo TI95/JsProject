@@ -24,7 +24,7 @@ export class Login {
             isValid = false;
 
         }
-        if (this.passwordElement.value/* && this.passwordElement.value.match(/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/)*/) {
+        if (this.passwordElement.value && this.passwordElement.value.match(/^(?=.*[A-Z])(?=.*\d).{8,}$/)) {
             this.passwordElement.classList.remove('is-invalid');
         } else {
             this.passwordElement.classList.add('is-invalid');
@@ -38,7 +38,6 @@ export class Login {
         this.emailElement = document.getElementById('email');
         this.passwordElement = document.getElementById('password');
         this.rememberMeElement = document.getElementById('remember');
-        //this.commonErrorElement = document.getElementById('common-error');
     }
 
     async login (){
@@ -52,8 +51,10 @@ export class Login {
                 AuthUtils.setAuthInfo(loginResult.tokens.accessToken, loginResult.tokens.refreshToken, {
                     id:loginResult.user.id,
                     name:loginResult.user.name,
+                    lastName:loginResult.user.lastName,
+
                 });
-                return this.openNewRoute('/')
+                return this.openNewRoute('/');
             }
         }
     }

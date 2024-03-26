@@ -1,11 +1,7 @@
-import {AuthUtils} from "../../utils/auth-utils";
+import {RedactCategory} from "../../utils/redact-category-utils";
 
-export class RedactIncomeCategory {
+export class RedactIncomeCategory extends RedactCategory {
     constructor(openNewRoute) {
-        this.openNewRoute = openNewRoute;
-
-        if (!AuthUtils.getAuthInfo(AuthUtils.accessTokenKey) || !AuthUtils.getAuthInfo(AuthUtils.refreshTokenKey)) {
-            return this.openNewRoute('/login');
-        }
+        super(openNewRoute, 'income', 'income-title');
     }
 }
