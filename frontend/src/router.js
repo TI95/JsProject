@@ -82,7 +82,7 @@ export class Router {
                 }
             },
             {
-                route: '/incomes',
+                route: '/income',
                 title: 'Доходы',
                 filePathTemplate: '/templates/pages/incomes/incomes.html',
                 useLayout: '/templates/layout.html',
@@ -92,7 +92,7 @@ export class Router {
 
             },
             {
-                route: '/incomes/create',
+                route: '/income/create',
                 title: 'Добавление категории дохода',
                 filePathTemplate: '/templates/pages/incomes/create.html',
                 useLayout: '/templates/layout.html',
@@ -104,7 +104,7 @@ export class Router {
 
             },
             {
-                route: '/incomes/redact',
+                route: '/income/redact',
                 title: 'Изменение категории дохода',
                 filePathTemplate: '/templates/pages/incomes/redact.html',
                 useLayout: '/templates/layout.html',
@@ -115,7 +115,7 @@ export class Router {
 
             },
             {
-                route: '/expenses',
+                route: '/expense',
                 title: 'Расходы',
                 filePathTemplate: '/templates/pages/expenses/expenses.html',
                 useLayout: '/templates/layout.html',
@@ -126,7 +126,7 @@ export class Router {
 
             },
             {
-                route: '/expenses/create',
+                route: '/expense/create',
                 title: 'Добавление категории дохода',
                 filePathTemplate: '/templates/pages/expenses/create.html',
                 useLayout: '/templates/layout.html',
@@ -137,7 +137,7 @@ export class Router {
 
             },
             {
-                route: '/expenses/redact',
+                route: '/expense/redact',
                 title: 'Изменение категории дохода',
                 filePathTemplate: '/templates/pages/expenses/redact.html',
                 useLayout: '/templates/layout.html',

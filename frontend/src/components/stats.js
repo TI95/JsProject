@@ -1,9 +1,10 @@
 import {AuthUtils} from "../utils/auth-utils";
 import Chart from 'chart.js/auto'
-import {HttpUtils} from "../utils/http-utils";
+import {BtnFilterUtils} from "../utils/btn-filter-utils";
 
-export class Stats {
+export class Stats extends BtnFilterUtils{
     constructor(openNewRoute) {
+        super();
         this.openNewRoute = openNewRoute;
         this.chart1 = null;
         this.chart2 = null;
@@ -12,58 +13,16 @@ export class Stats {
             return this.openNewRoute('/login');
 
         }
-        this.getPieChart('today')
 
-        const dateFrom = document.getElementById('date-from');
-        const dateTo= document.getElementById('date-to');
-        const todayButton = document.getElementById('today-btn');
-        const weekButton = document.getElementById('week-btn');
-        const monthButton = document.getElementById('month-btn');
-        const yearButton = document.getElementById('year-btn');
-        const allButton = document.getElementById('all-btn');
-        const intervalButton = document.getElementById('interval-btn');
-
-        todayButton.addEventListener("click", () => {
-            this.getPieChart('today');
-        });
-
-        weekButton.addEventListener("click", () => {
-            this.getPieChart('week');
-        });
-
-        monthButton.addEventListener("click", () => {
-            this.getPieChart('month');
-        });
-
-        yearButton.addEventListener("click", () => {
-            this.getPieChart('year');
-        });
-
-        allButton.addEventListener("click", () => {
-            this.getPieChart('all');
-        });
-
-        intervalButton.addEventListener("click", () => {
-
-            this.getPieChart('interval', dateFrom.value, dateTo.value);
-        });
-
-    }
+     }
 
 
 
-
-   async getPieChart(useDate,dateFrom, dateTo) {
+   async getPieChart() {
        const pie1 = document.getElementById('myChart');
        const pie2 = document.getElementById('myChart2');
 
-       if (useDate && !dateFrom && !dateTo) {
-           this.result = await HttpUtils.request('/operations?period=' + useDate);
-       }
 
-       if (useDate && dateFrom && dateTo) {
-           this.result = await HttpUtils.request('/operations?period=' + useDate + '&dateFrom=' + dateFrom + '&dateTo=' + dateTo);
-       }
 
        if (this.chart1) {
            this.chart1.destroy();
