@@ -27,7 +27,15 @@ module.exports = {
                 use: [
                     "style-loader",
                     "css-loader",
-                    "sass-loader",
+                    {
+                        loader: "sass-loader",
+                        options: {
+                            api: "modern-compiler",
+                            sassOptions: {
+                                // Your sass options
+                            },
+                        },
+                    },
                 ],
             },
             {
