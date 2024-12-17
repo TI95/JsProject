@@ -250,7 +250,7 @@ export class Router {
 
                 }
 
-                contentBlock.innerHTML = await fetch(newRoute.filePathTemplate).then(response => response.text());
+                contentBlock.innerHTML = await fetch(newRoute.filePathTemplate, { cache: "no-store" }).then(response => response.text());
             }
 
             if (newRoute.load && typeof newRoute.load === 'function') {

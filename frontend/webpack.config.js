@@ -9,7 +9,7 @@ module.exports = {
     output: {
         filename: 'app.js',
         path: path.resolve(__dirname, 'dist'),
-     
+        publicPath: '/',
         clean: true
 
     },
@@ -43,8 +43,7 @@ module.exports = {
                         options: {
                             api: "modern-compiler",
                             sassOptions: {
-                                // Your sass options
-                            },
+                             },
                         },
                     },
                 ],
