@@ -1,0 +1,108 @@
+<header class="header-main">
+    <div class>
+        <div class="title-container container-fluid">
+            <h1 class="dashboard-title">Создание дохода/расхода</h1>
+        </div>
+    </div>
+</header>
+
+<section class="dashboard">
+    <div class="container-fluid">
+        <div class="card-header">
+            <a href="/dashboard/create" class=" btn btn-success dashboard-btn">Создать доход</a>
+            <a href="/dashboard/create" class=" btn btn-danger  dashboard-btn">Создать расход</a>
+        </div>
+        <div class="date-filters  d-md-block">
+            <button type="button" class="btn btn-outline-secondary data-filter-btn ">Сегодня</button>
+            <button type="button" class="btn btn-outline-secondary data-filter-btn ">Неделя</button>
+            <button type="button" class="btn btn-outline-secondary data-filter-btn ">Месяц</button>
+            <button type="button" class="btn btn-outline-secondary data-filter-btn  ">Год</button>
+            <button type="button" class="btn btn-outline-secondary data-filter-btn ">Все</button>
+            <button type="button" class="btn btn-outline-secondary data-filter-btn ">Интервал</button>
+            <label for="date-from" class="date-label">с</label>
+            <input type="text" placeholder="Дата" id="date-from" class="date-from">
+            <label for="date-to" class="date-label">до</label>
+            <input type="text" placeholder="Дата" id="date-to" class="date-to">
+        </div>
+        <!-- /.card-header -->
+        <!-- <div class="card-body">
+             <table id="data-table" class="table table-bordered table-striped">
+                 <thead>
+                 <tr>
+                     <th >№ операции</th>
+                     <th>Тип</th>
+                     <th>Категория</th>
+                     <th>Сумма</th>
+                     <th>Дата</th>
+                     <th>Комментарий</th>
+                      <th></th>
+                 </tr>
+                 </thead>
+                 <tbody id="records">
+
+                 </tbody>
+             </table>
+         </div>-->
+
+        <!-- /.card-header -->
+        <div class="<!--card-body --><!--table-responsive p-0-->" style="height: 300px;">
+            <table class="table  table-head-fixed text-nowrap">
+                <thead>
+
+                <th class="th-text-color border-0">№ операции</th>
+                <th class="th-text-color border-0">Тип</th>
+                <th class="th-text-color border-0">Категория</th>
+                <th class="th-text-color border-0">Сумма</th>
+                <th class="th-text-color border-0">Дата</th>
+                <th class="th-text-color border-0">Комментарий</th>
+                <th class="border-0"></th>
+
+                </thead>
+                <tbody>
+                <tr class="all-rows">
+                    <td class="operation-number border-0">1</td>
+                    <td class="border-0"><span class="income-color ">доход</span></td>
+                    <td class="border-0">зарплата</td>
+                    <td class="border-0">500$</td>
+                    <td class="border-0">11.09.2022</td>
+                    <td class="border-0"></td>
+                    <td class="icons-container border-0">
+                        <img class="trash" id="trash-icon" src="../images/trash-icon.png" alt="trash-icon">
+                        <a href="dashboard/redact"><img src="../images/pen-icon.png" alt="pen-icon"></a>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="operation-number">2</td>
+                    <td><span class="expense-color">расход</span></td>
+                    <td>жильё</td>
+                    <td>2 500$</td>
+                    <td>12.09.2022</td>
+                    <td></td>
+                    <td class="icons-container ">
+                        <img class="trash" src="../images/trash-icon.png" alt="trash-icon">
+                        <a href="dashboard/redact"><img src="../images/pen-icon.png" alt="pen-icon"></a>
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <!-- /.card-body -->
+    </div>
+
+    <div class="popup-container " id="popup-container">
+        <div class="popup d-flex flex-column justify-content-center border border-light-subtle rounded d-flex ">
+
+            <div class="popup-text">Вы действительно хотите удалить категорию? Связанные доходы будут удалены
+                навсегда.
+            </div>
+            <div class="popup-btns">
+                <button type="button" class="btn btn-success">Да, удалить</button>
+                <button type="button" class="btn btn-danger" id="btn-cancel">Не удалять</button>
+            </div>
+
+        </div>
+    </div>
+
+</section>

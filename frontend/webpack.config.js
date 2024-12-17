@@ -72,6 +72,7 @@ module.exports = {
                 {from: "./src/templates", to: "templates"},
                 {from: "./src/images", to: "images"},
                 {from: "./.env", to: "./"},
+                {from: "./netlify.toml", to: "./"}
             ]
         })
     ]
