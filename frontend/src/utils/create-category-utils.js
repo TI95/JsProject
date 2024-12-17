@@ -32,6 +32,8 @@ export class CreateCategory {
             const result = await HttpUtils.request(`/categories/${this.categoryUrl}`, 'POST', true, {
                 title: this.input.value
             });
+            console.log(result)
+
             if (result.response.error === true) {
                 this.openNewRoute(`/${this.categoryUrl}/create`);
             } else {

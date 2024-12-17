@@ -6,11 +6,12 @@ const Dotenv = require('dotenv-webpack');
 module.exports = {
     entry: './src/app.js',
     mode: 'development',
-
     output: {
         filename: 'app.js',
         path: path.resolve(__dirname, 'dist'),
-        publicPath: '/'
+     
+        clean: true
+
     },
     devServer: {
         static: {
@@ -22,6 +23,16 @@ module.exports = {
     },
     module: {
         rules: [
+            {
+                test: /\.js$/, // Обработка JavaScript
+                exclude: /node_modules/,
+                use: {
+                  loader: 'babel-loader',
+                  options: {
+                    presets: ['@babel/preset-env'],
+                  },
+                },
+              },
             {
                 test: /\.scss$/i,
                 use: [
@@ -36,7 +47,11 @@ module.exports = {
                     'style-loader',
                     'css-loader'
                 ]
-            }
+            },
+            {
+                test: /\.html$/,  
+                use: ['html-loader'],
+              },
         ],
     },
     plugins: [

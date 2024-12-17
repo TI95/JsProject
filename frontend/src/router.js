@@ -185,8 +185,8 @@ export class Router {
     }
 
     initEvents() {
-        window.addEventListener('DOMContentLoaded', this.activateRoute.bind(this)) // отлавливаем, что страница загружается
-        window.addEventListener('popstate', this.activateRoute.bind(this)) // отлавливаем когда поменялся url
+        window.addEventListener('DOMContentLoaded', (e) => this.activateRoute(e, window.location.pathname)) // отлавливаем, что страница загружается
+        window.addEventListener('popstate', (e) => this.activateRoute(e, window.location.pathname)) // отлавливаем когда поменялся url
     }
 
     async openNewRoute(url) {
@@ -233,6 +233,7 @@ export class Router {
                     }
                     if (!this.userName && !this.userLastName) {
                         let userInfo = AuthUtils.getAuthInfo(AuthUtils.userInfoTokenKey);
+                        console.log(userInfo)
                         if (userInfo) {
                             userInfo = JSON.parse(userInfo);
                             if (userInfo.name && userInfo.lastName) {

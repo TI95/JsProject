@@ -4,6 +4,7 @@ import {HttpUtils} from "./http-utils";
 
 export class RedactCategory {
     constructor(openNewRoute, categoryUrl, inputId) {
+        console.log(inputId)
         this.openNewRoute = openNewRoute;
         this.title = document.getElementById(inputId);
 
@@ -32,10 +33,11 @@ export class RedactCategory {
         if (this.validation()) {
             const urlParams = new URLSearchParams(window.location.search);
             const id = urlParams.get('id');
+
             const result = await HttpUtils.request(`/categories/${this.categoryUrl}/${id}`, 'PUT', true, {
                 title: this.title.value
             });
-            if (result.response.error === true) {
+             if (result.response.error === true) {
                 this.openNewRoute(`/${this.categoryUrl}/redact`);
             } else {
                 this.openNewRoute(`/${this.categoryUrl}`);
